@@ -6,21 +6,21 @@
 /*   By: fbarrett <fbarrett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:27:37 by fbarrett          #+#    #+#             */
-/*   Updated: 2023/11/28 11:58:34 by fbarrett         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:37:58 by fbarrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "Libft/libft.h"
 
-int check_invalid_digits(char *str)
+int	check_invalid_digits(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str[i] == '-')
 		i++;
-	while(str[i])
+	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 			return (0);
@@ -29,14 +29,14 @@ int check_invalid_digits(char *str)
 	return (1);
 }
 
-int check_valid_argv(char **argv)
+int	check_valid_argv(char **argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(argv[i])
+	while (argv[i])
 	{
-		if(!check_invalid_digits(argv[i]) || ft_strlen(argv[i]) > 11)
+		if (!check_invalid_digits(argv[i]) || ft_strlen(argv[i]) > 11)
 		{
 			ft_putstr_fd("Error\n", 1);
 			return (0);
@@ -47,13 +47,13 @@ int check_valid_argv(char **argv)
 	return (1);
 }
 
-int static check_valid_int(t_stack stack)
+int	static	check_valid_int(t_stack stack)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < stack.len_a)
-	{	
+	while (i < stack.len_a)
+	{
 		if (stack.lista[i] > 2147483647 || stack.lista[i] < -2147483648)
 		{
 			free(stack.lista);
@@ -66,10 +66,10 @@ int static check_valid_int(t_stack stack)
 	return (1);
 }
 
-int static check_double(t_stack stack)
+int	static	check_double(t_stack stack)
 {
-	int i;
-	int a;
+	int	i;
+	int	a;
 
 	i = 0;
 	while (i < stack.len_a)
@@ -82,16 +82,16 @@ int static check_double(t_stack stack)
 				write(1, "Error", 5);
 				return (0);
 			}
-			a++;		
+			a++;
 		}
 		i++;
 	}
 	return (1);
 }
 
-int check_valid_list(t_stack stack)
+int	check_valid_list(t_stack stack)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!check_valid_int(stack))
@@ -108,4 +108,3 @@ int check_valid_list(t_stack stack)
 	else
 		return (1);
 }
-

@@ -6,7 +6,7 @@
 /*   By: fbarrett <fbarrett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:58:25 by fbarrett          #+#    #+#             */
-/*   Updated: 2023/11/28 11:48:58 by fbarrett         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:34:08 by fbarrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int	r_rotate(long *list, int len)
 	return (1);
 }
 
-int find_smallest(long* lista, int len_a)
+int	find_smallest(long *lista, int len_a)
 {
-	int smallest;
-	int i;
+	int	smallest;
+	int	i;
 
 	smallest = lista[0];
 	i = 1;
@@ -54,16 +54,16 @@ int find_smallest(long* lista, int len_a)
 
 int	make_relative_list(t_stack *stack)
 {
-	int i;
-	int a;
-	int position;
+	int	i;
+	int	a;
+	int	position;
 
 	i = 0;
 	while (i < (*stack).len_a)
 	{
 		position = 1;
 		a = 0;
-		while(a < (*stack).len_a)
+		while (a < (*stack).len_a)
 		{
 			if ((*stack).lista[a] < (*stack).lista[i])
 				position++;
