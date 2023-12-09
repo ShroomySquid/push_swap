@@ -6,7 +6,7 @@
 /*   By: fbarrett <fbarrett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 10:03:46 by fbarrett          #+#    #+#             */
-/*   Updated: 2023/11/28 11:52:52 by fbarrett         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:49:56 by fbarrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static	void	sort_4(t_stack stack)
 	if (!is_sorted(stack.lista, stack.len_a) && 
 		!is_rev_sorted(stack.listb, stack.len_b))
 		ss(&stack);
-	else if (!is_sorted(stack.lista, stack.len_a))
+	if (!is_sorted(stack.lista, stack.len_a))
 		sa(&stack);
-	else if (!is_rev_sorted(stack.listb, stack.len_b))
+	if (!is_rev_sorted(stack.listb, stack.len_b))
 		sb(&stack);
 	pa(&stack);
 	pa(&stack);
@@ -53,7 +53,7 @@ static	void	sort_5(t_stack stack)
 	}
 	if (!is_sorted(stack.lista, stack.len_a))
 		sort_3(stack);
-	else if (!is_rev_sorted(stack.listb, stack.len_b))
+	if (!is_rev_sorted(stack.listb, stack.len_b))
 		sb(&stack);
 	pa(&stack);
 	pa(&stack);

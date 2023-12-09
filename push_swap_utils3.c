@@ -6,7 +6,7 @@
 /*   By: fbarrett <fbarrett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:27:37 by fbarrett          #+#    #+#             */
-/*   Updated: 2023/11/28 13:37:58 by fbarrett         ###   ########.fr       */
+/*   Updated: 2023/12/01 11:27:29 by fbarrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ int	static	check_valid_int(t_stack stack)
 	{
 		if (stack.lista[i] > 2147483647 || stack.lista[i] < -2147483648)
 		{
-			free(stack.lista);
-			free(stack.listb);
 			ft_putstr_fd("Error\n", 1);
 			return (0);
 		}
