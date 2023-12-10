@@ -6,7 +6,7 @@
 /*   By: fbarrett <fbarrett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:27:37 by fbarrett          #+#    #+#             */
-/*   Updated: 2023/12/01 11:27:29 by fbarrett         ###   ########.fr       */
+/*   Updated: 2023/12/10 16:28:04 by fbarrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	static	check_double(t_stack stack)
 		{
 			if (stack.lista[i] == stack.lista[a])
 			{
-				write(1, "Error", 5);
+				write(1, "Error\n", 6);
 				return (0);
 			}
 			a++;

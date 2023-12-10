@@ -6,7 +6,7 @@
 /*   By: fbarrett <fbarrett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:09:41 by fbarrett          #+#    #+#             */
-/*   Updated: 2023/12/01 18:17:32 by fbarrett         ###   ########.fr       */
+/*   Updated: 2023/12/10 16:34:44 by fbarrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	free_stack(t_stack *stack)
 	free(stack->relative_listb);
 }
 
-int	list_in_str(t_stack stack, char **argv)
+int	list_in_str(t_stack *stack, char **argv)
 {
 	char	**temp_argv;
 
@@ -53,9 +53,9 @@ int	list_in_str(t_stack stack, char **argv)
 		free_all(temp_argv);
 		return (1);
 	}
-	stack.len_a = count_str(argv[1], ' ');
-	calloc_moi_ca(&stack);
-	create_int_array(stack, temp_argv);
+	(*stack).len_a = count_str(argv[1], ' ');
+	calloc_moi_ca(stack);
+	create_int_array(*stack, temp_argv);
 	free_all(temp_argv);
 	return (0);
 }
@@ -68,8 +68,11 @@ int	main(int argc, char **argv)
 	stack.len_b = 0;
 	if (argc < 2)
 		return (0);
-	if (argc == 2 && ft_strchr(argv[1], 32))
-		list_in_str(stack, argv);
+	if (argc == 2 && ft_strchr(argv[1], ' '))
+	{
+		if (list_in_str(&stack, argv))
+			return (1);
+	}
 	else if (!check_valid_argv(&argv[1]))
 		return (1);
 	else
@@ -79,10 +82,9 @@ int	main(int argc, char **argv)
 	}
 	if (!check_valid_list(stack))
 		return (1);
-	if (stack.len_a < 7 && !is_sorted(stack.lista, stack.len_a))
+	if (stack.len_a < 7 && !is_sorted(stack.relative_lista, stack.len_a))
 		sort_small_stack(stack);
-	else if (!is_sorted(stack.lista, stack.len_a))
+	else if (!is_sorted(stack.relative_lista, stack.len_a))
 		sort_it(&stack, 0);
-	free_stack(&stack);
-	return (0);
+	return (free_stack(&stack), 0);
 }
