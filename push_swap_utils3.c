@@ -6,7 +6,7 @@
 /*   By: fbarrett <fbarrett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:27:37 by fbarrett          #+#    #+#             */
-/*   Updated: 2023/12/10 16:28:04 by fbarrett         ###   ########.fr       */
+/*   Updated: 2023/12/10 16:37:31 by fbarrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ int	check_valid_list(t_stack stack)
 	i = 0;
 	if (!check_valid_int(stack))
 		i += 1;
-	if (!check_double(stack))
+	else if (!check_double(stack))
 		i += 1;
-	if (!make_relative_list(&stack))
+	else if (!make_relative_list(&stack))
 		i += 1;
 	if (i > 0)
 	{
