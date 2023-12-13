@@ -6,7 +6,7 @@
 /*   By: fbarrett <fbarrett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 10:03:46 by fbarrett          #+#    #+#             */
-/*   Updated: 2023/11/28 13:49:56 by fbarrett         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:10:05 by fbarrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	sort_3(t_stack stack)
 {
-	if (stack.lista[0] == find_biggest(stack.lista, stack.len_a))
+	if (stack.relative_lista[0] == find_biggest(stack.relative_lista, stack.len_a))
 		ra(stack);
-	else if (stack.lista[1] == find_biggest(stack.lista, stack.len_a))
+	else if (stack.relative_lista[1] == find_biggest(stack.relative_lista, stack.len_a))
 		rra(stack);
 	if (!is_sorted(stack.lista, stack.len_a))
 		sa(&stack);
@@ -31,12 +31,12 @@ static	void	sort_4(t_stack stack)
 		else
 			ra(stack);
 	}
-	if (!is_sorted(stack.lista, stack.len_a) && 
-		!is_rev_sorted(stack.listb, stack.len_b))
+	if (!is_sorted(stack.relative_lista, stack.len_a) && 
+		!is_rev_sorted(stack.relative_listb, stack.len_b))
 		ss(&stack);
-	if (!is_sorted(stack.lista, stack.len_a))
+	if (!is_sorted(stack.relative_lista, stack.len_a))
 		sa(&stack);
-	if (!is_rev_sorted(stack.listb, stack.len_b))
+	if (!is_rev_sorted(stack.relative_listb, stack.len_b))
 		sb(&stack);
 	pa(&stack);
 	pa(&stack);
@@ -51,9 +51,9 @@ static	void	sort_5(t_stack stack)
 		else
 			ra(stack);
 	}
-	if (!is_sorted(stack.lista, stack.len_a))
+	if (!is_sorted(stack.relative_lista, stack.len_a))
 		sort_3(stack);
-	if (!is_rev_sorted(stack.listb, stack.len_b))
+	if (!is_rev_sorted(stack.relative_listb, stack.len_b))
 		sb(&stack);
 	pa(&stack);
 	pa(&stack);
@@ -68,15 +68,15 @@ static	void	sort_6(t_stack stack)
 		else
 			ra(stack);
 	}
-	if (!is_sorted(stack.lista, stack.len_a))
+	if (!is_sorted(stack.relative_lista, stack.len_a))
 		sort_3(stack);
-	else if (!is_rev_sorted(stack.listb, stack.len_b))
+	if (!is_rev_sorted(stack.relative_listb, stack.len_b))
 	{
-		if (stack.listb[0] == find_smallest(stack.listb, stack.len_b))
+		if (stack.relative_listb[0] == find_smallest(stack.relative_listb, stack.len_b))
 			rb(stack);
-		else if (stack.listb[1] == find_smallest(stack.listb, stack.len_b))
+		else if (stack.relative_listb[1] == find_smallest(stack.relative_listb, stack.len_b))
 			rrb(stack);
-		if (!is_rev_sorted(stack.listb, stack.len_b))
+		if (!is_rev_sorted(stack.relative_listb, stack.len_b))
 			sb(&stack);
 	}
 	pa(&stack);
