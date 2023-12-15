@@ -6,7 +6,7 @@
 /*   By: fbarrett <fbarrett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:09:41 by fbarrett          #+#    #+#             */
-/*   Updated: 2023/12/10 16:34:44 by fbarrett         ###   ########.fr       */
+/*   Updated: 2023/12/15 12:53:00 by fbarrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,29 @@
 static	int	calloc_moi_ca(t_stack *stack)
 {
 	stack->lista = ft_calloc(stack->len_a, sizeof(long));
+	if (!stack->lista)
+		return (0);
 	stack->listb = ft_calloc(stack->len_a, sizeof(long));
+	if (!stack->listb)
+	{
+		free(stack->lista);
+		return (0);
+	}
 	stack->relative_lista = ft_calloc(stack->len_a, sizeof(long));
+	if (!stack->relative_lista)
+	{
+		free(stack->lista);
+		free(stack->listb);
+		return (0);
+	}
 	stack->relative_listb = ft_calloc(stack->len_a, sizeof(long));
+	if (!stack->relative_listb)
+	{
+		free(stack->lista);
+		free(stack->listb);
+		free(stack->relative_lista);
+		return (0);
+	}
 	return (1);
 }
 
@@ -77,7 +97,8 @@ int	main(int argc, char **argv)
 		return (1);
 	else
 	{
-		calloc_moi_ca(&stack);
+		if (!calloc_moi_ca(&stack))
+			return (1);
 		create_int_array(stack, &argv[1]);
 	}
 	if (!check_valid_list(stack))

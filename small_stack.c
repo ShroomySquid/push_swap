@@ -6,7 +6,7 @@
 /*   By: fbarrett <fbarrett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 10:03:46 by fbarrett          #+#    #+#             */
-/*   Updated: 2023/12/13 13:10:05 by fbarrett         ###   ########.fr       */
+/*   Updated: 2023/12/15 12:56:16 by fbarrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 void	sort_3(t_stack stack)
 {
-	if (stack.relative_lista[0] == find_biggest(stack.relative_lista, stack.len_a))
+	if (stack.relative_lista[0] == 
+		find_biggest(stack.relative_lista, stack.len_a))
 		ra(stack);
-	else if (stack.relative_lista[1] == find_biggest(stack.relative_lista, stack.len_a))
+	else if (stack.relative_lista[1] == 
+		find_biggest(stack.relative_lista, stack.len_a))
 		rra(stack);
 	if (!is_sorted(stack.lista, stack.len_a))
 		sa(&stack);
@@ -72,9 +74,11 @@ static	void	sort_6(t_stack stack)
 		sort_3(stack);
 	if (!is_rev_sorted(stack.relative_listb, stack.len_b))
 	{
-		if (stack.relative_listb[0] == find_smallest(stack.relative_listb, stack.len_b))
+		if (stack.relative_listb[0] == 
+			find_smallest(stack.relative_listb, stack.len_b))
 			rb(stack);
-		else if (stack.relative_listb[1] == find_smallest(stack.relative_listb, stack.len_b))
+		else if (stack.relative_listb[1] == 
+			find_smallest(stack.relative_listb, stack.len_b))
 			rrb(stack);
 		if (!is_rev_sorted(stack.relative_listb, stack.len_b))
 			sb(&stack);
