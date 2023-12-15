@@ -6,7 +6,7 @@
 /*   By: fbarrett <fbarrett@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 13:09:41 by fbarrett          #+#    #+#             */
-/*   Updated: 2023/12/15 12:53:00 by fbarrett         ###   ########.fr       */
+/*   Updated: 2023/12/15 13:49:23 by fbarrett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,13 @@ static	int	calloc_moi_ca(t_stack *stack)
 	stack->relative_lista = ft_calloc(stack->len_a, sizeof(long));
 	if (!stack->relative_lista)
 	{
-		free(stack->lista);
-		free(stack->listb);
+		free_stack(stack);
 		return (0);
 	}
 	stack->relative_listb = ft_calloc(stack->len_a, sizeof(long));
 	if (!stack->relative_listb)
 	{
-		free(stack->lista);
-		free(stack->listb);
-		free(stack->relative_lista);
+		free_stack(stack);
 		return (0);
 	}
 	return (1);
@@ -57,10 +54,14 @@ int	create_int_array(t_stack stack, char **str_array)
 
 void	free_stack(t_stack *stack)
 {
-	free(stack->lista);
-	free(stack->listb);
-	free(stack->relative_lista);
-	free(stack->relative_listb);
+	if (stack->lista)
+		free(stack->lista);
+	if (stack->listb)
+		free(stack->listb);
+	if (stack->relative_lista)
+		free(stack->relative_lista);
+	if (stack->relative_listb)
+		free(stack->relative_listb);
 }
 
 int	list_in_str(t_stack *stack, char **argv)
@@ -74,7 +75,8 @@ int	list_in_str(t_stack *stack, char **argv)
 		return (1);
 	}
 	(*stack).len_a = count_str(argv[1], ' ');
-	calloc_moi_ca(stack);
+	if (!calloc_moi_ca(stack))
+		return (1);
 	create_int_array(*stack, temp_argv);
 	free_all(temp_argv);
 	return (0);
@@ -88,14 +90,12 @@ int	main(int argc, char **argv)
 	stack.len_b = 0;
 	if (argc < 2)
 		return (0);
-	if (argc == 2 && ft_strchr(argv[1], ' '))
-	{
-		if (list_in_str(&stack, argv))
-			return (1);
-	}
-	else if (!check_valid_argv(&argv[1]))
+	if (argc == 2 && ft_strchr(argv[1], ' ') 
+		&& list_in_str(&stack, argv))
 		return (1);
-	else
+	if (argc > 2 && check_valid_argv(&argv[1]))
+		return (1);
+	else if (argc > 2)
 	{
 		if (!calloc_moi_ca(&stack))
 			return (1);
