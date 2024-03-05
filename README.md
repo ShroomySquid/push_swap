@@ -23,7 +23,7 @@ git@github.com:ShroomySquid/push_swap.git
 
 - Run the command make in the folder to compile the program.
 
-# get_next_line -- Français
+# Push-Swap -- Français
 
 Un programme qui arrange les éléments d'une pile en ordre croissant. Ce projet fait partie du cursus de 42 québec.
 Le programme prend en argument les éléments du stack, qui doivent être des entiers. Le programme retourne les opérations
