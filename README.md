@@ -3,7 +3,10 @@
 A program that sort elements of a stack in ascending order. This project is part of the 42 Quebec curriculum. The program
 takes as arguments the elements of the stack, which must be integers, in any given order, and return the operations it will do
 to arrange the stack. The program is build assuming you have access to 2 stacks and all the given element
-are placed inside the first stack at start.
+are placed inside the first stack at start. Here is an example of a command you could run:
+```bash
+./push_swap 0 3 2 7 1
+```
 
 For the operations: The first letter stands for the type of operation. "s" stands for swap, which means taking the first 
 element of a stack and swap it with the second. "r" stands for rotate, it puts the first element of a stack to the end of
@@ -28,7 +31,10 @@ git@github.com:ShroomySquid/push_swap.git
 Un programme qui arrange les éléments d'une pile en ordre croissant. Ce projet fait partie du cursus de 42 québec.
 Le programme prend en argument les éléments du stack, qui doivent être des entiers. Le programme retourne les opérations
 qu'il doit faire afin de réarranger les éléments en ordre croissant. Le programme assume qu'il a accès à 2 piles et que
-tout les éléments sont initialement placés dans la première pile.
+tout les éléments sont initialement placés dans la première pile. Voici un example d'une commande que vous pouvez essayer:
+```bash
+./push_swap 0 3 2 7 1
+```
 
 Pour les opérations: la première lettre indique le type d'opération faite par le programme. "s" pour swap, on intervertit 
 les deux premiers éléments de la pile. "r" pour rotate, on place le premier élément de la pile à la fin de la pile.
